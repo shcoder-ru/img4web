@@ -7,7 +7,7 @@
     "crop",
     "adaptive"
   ],
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "lib/img4web.js",
   "bin": {
     "guit": "./bin/img4web"
@@ -21,11 +21,11 @@
   "devDependencies": {
     "babel-core": "^6.24.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-es2017": "^6.22.0"
   },
   "dependencies": {
-    "babel-polyfill": "^6.23.0",
     "commander": "^2.9.0",
     "gm": "^1.23.0",
     "mkdirp": "^0.5.1",
