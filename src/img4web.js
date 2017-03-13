@@ -1,3 +1,4 @@
+import 'babel-runtime/regenerator';
 import getFiles from './get-files';
 import createImage from './create-image';
 import path from 'path';

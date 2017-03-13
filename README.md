@@ -163,6 +163,7 @@ CSS media queries
 
 ## Dependencies
 [babel-core](https://www.npmjs.com/package/babel-core) * 
+[babel-runtime](https://www.npmjs.com/package/babel-runtime) * 
 [babel-plugin-transform-runtime](https://www.npmjs.com/package/babel-plugin-transform-runtime) * 
 [babel-plugin-transform-object-rest-spread](https://www.npmjs.com/package/babel-plugin-transform-object-rest-spread) * 
 [babel-preset-es2015](https://www.npmjs.com/package/babel-preset-es2015) * 
