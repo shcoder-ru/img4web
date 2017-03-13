@@ -1,0 +1,69 @@
+#!/usr/bin/env node
+
+require('babel-core/register');
+require('babel-polyfill');
+
+var fs = require('fs');
+var path = require('path');
+var commander = require('commander');
+var img4webConvert = require('../lib/img4web').conver;
+
+var config = {};
+var DIR = process.cwd();
+var RC = path.join(DIR, '.img4webrc');
+var PACKAGE = path.join(DIR, 'package.json');
+
+var reItems = /\s*;\s*/;
+var reIdOptions = /\s*=\s*/;
+var reOptions = /\s*,\s*/;
+var reKeyValue = /\s*:\s*/;
+
+function parseOutFormat(str) {
+    var result = {};
+    var items = str.split(reItems);
+    items.forEach(function(item) {
+        var idAndOptions = item.split(reIdOptions);
+        var id = idAndOptions[0];
+        var options = idAndOptions[1].split(reOptions);
+        result[id] = {};
+        options.forEach(function(options) {
+            var keyValue = options.split(reKeyValue);
+            result[id][keyValue[0]] = keyValue[1];
+        });
+    });
+    return result;
+}
+
+if (fs.existsSync(RC)) {
+    var rcConfig = JSON.parse(fs.readFileSync(RC, 'utf8'));
+    if (rcConfig) {
+        config.srcDir = rcConfig.srcDir;
+        config.srcExt = rcConfig.srcExt;
+        config.outDir = rcConfig.outDir;
+        config.outFormat = rcConfig.outFormat;
+    }
+}
+
+if (fs.existsSync(PACKAGE)) {
+    var packageConfig = require(PACKAGE);
+    if (packageConfig.img4web) {
+        config.srcDir = packageConfig.img4web.srcDir || config.srcDir;
+        config.srcExt = packageConfig.img4web.srcExt || config.srcExt;
+        config.outDir = packageConfig.img4web.outDir || rcConfig.outDir;
+        config.outFormat = packageConfig.img4web.outFormat || rcConfig.outFormat;
+    }
+}
+
+commander
+    .option('--src-dir <dir>', 'Specify source dir')
+    .option('--src-ext <extensions>', 'Specify source extensions')
+    .option('--out-dir <dir>', 'Specify output dir')
+    .option('--out-format <format>', 'Specify output format')
+    .parse(process.argv);
+
+config.srcDir = path.resolve(commander.srcDir || config.srcDir);
+config.srcExt = commander.srcExt ? commander.srcExt.split(/\s*,\s*/) : config.srcExt;
+config.outDir = path.resolve(commander.outDir || config.outDir);
+config.outFormat = commander.outFormat ? parseOutFormat(commander.outFormat) : config.outFormat;
+
+img4webConvert(config).catch(console.error);
