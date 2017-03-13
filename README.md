@@ -13,7 +13,7 @@ npm install --save-dev img4web
 ```
 
 ##### Global installation
-```
+```sh
 npm install -g img4web
 ```
 
@@ -38,7 +38,7 @@ img4web --help
 
 Run the converter using
 
-```
+```sh
 img4web --src-dir ./tmp/src --src-ext jpg,png,gif \
 --out-dir ./tmp/out --out-format \
 'sm1=ext:jpg,width:420,height:240,quality:80,strip:true,interlance:Line;\
@@ -59,25 +59,29 @@ You can specify the config in `.img4webrc`
 
 ```json
 {
-    srcDir: './tmp/src',
-    srcExt: [ 'jpg', 'png', 'gif' ],
-    outDir: './tmp/out',
-    outFormat: {
-        sm1: {
-            ext: 'jpg',
-            width: 420,
-            height: 240,
-            quality: 80,
-            strip: true,
-            interlance: 'Line'
+    "srcDir": "./tmp/src",
+    "srcExt": [
+        "jpg",
+        "png",
+        "gif"
+    ],
+    "outDir": "./tmp/out",
+    "outFormat": {
+        "sm1": {
+            "ext": "jpg",
+            "width": 420,
+            "height": 240,
+            "quality": 80,
+            "strip": true,
+            "interlance": "Line"
         },
-        md1: {
-            ext: 'jpg',
-            width: 640,
-            height: 480,
-            quality: 90,
-            strip: true,
-            interlance: 'Line'
+        "md1": {
+            "ext": "jpg",
+            "width": 640,
+            "height": 480,
+            "quality": 90,
+            "strip": true,
+            "interlance": "Line"
         }
     }
 }
@@ -87,31 +91,34 @@ Alternatively, you can specify the field `img4web` in your `package.json`
 
 ```json
 {
-    img4web: {
-        srcDir: './tmp/src',
-        srcExt: [ 'jpg', 'png', 'gif' ],
-        outDir: './tmp/out',
-        outFormat: {
-            sm1: {
-                ext: 'jpg',
-                width: 420,
-                height: 240,
-                quality: 80,
-                strip: true,
-                interlance: 'Line'
+    "img4web": {
+        "srcDir": "./tmp/src",
+        "srcExt": [
+            "jpg",
+            "png",
+            "gif"
+        ],
+        "outDir": "./tmp/out",
+        "outFormat": {
+            "sm1": {
+                "ext": "jpg",
+                "width": 420,
+                "height": 240,
+                "quality": 80,
+                "strip": true,
+                "interlance": "Line"
             },
-            md1: {
-                ext: 'jpg',
-                width: 640,
-                height: 480,
-                quality: 90,
-                strip: true,
-                interlance: 'Line'
+            "md1": {
+                "ext": "jpg",
+                "width": 640,
+                "height": 480,
+                "quality": 90,
+                "strip": true,
+                "interlance": "Line"
             }
         }
     }
 }
-
 ```
 
 And specify scripts in `package.json`
@@ -128,7 +135,7 @@ And specify scripts in `package.json`
 
 tag [picture](https://developer.mozilla.org/en/docs/Web/HTML/Element/picture)
 
-``` html
+```html
 <picture>
   <source media="(min-width: 768px)" srcset="img-sm1.jpg">
   <source media="(min-width: 992px)" srcset="img-md1.jpg">
@@ -138,7 +145,7 @@ tag [picture](https://developer.mozilla.org/en/docs/Web/HTML/Element/picture)
 
 CSS media queries
 
-``` css
+```css
 .container {
     background: url(img.jpg);
 }
