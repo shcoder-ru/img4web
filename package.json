@@ -7,10 +7,10 @@
     "crop",
     "adaptive"
   ],
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "lib/img4web.js",
   "bin": {
-    "guit": "./bin/img4web"
+    "img4web": "./bin/img4web"
   },
   "license": "ISC",
   "repository": {
