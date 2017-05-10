@@ -6,7 +6,7 @@ function write(instance, out) {
     return new Promise((resolve, reject) => {
         instance.write(out, err => {
             if (err) return reject(err);
-            resolve();
+            resolve(out);
         });
     });
 }

@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var commander = require('commander');
-var img4webConvert = require('../lib/img4web').conver;
+var img4webConvert = require('../lib/img4web').convert;
 
 var config = {};
 var DIR = process.cwd();

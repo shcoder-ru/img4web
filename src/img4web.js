@@ -3,7 +3,7 @@ import getFiles from './get-files';
 import createImage from './create-image';
 import path from 'path';
 
-export async function conver(options) {
+export async function convert(options) {
     let { srcFile, srcDir, srcExt, outDir, outFormat } = options;
     let files = srcFile ? [srcFile] : await getFiles(srcDir, srcExt);
 
@@ -13,7 +13,7 @@ export async function conver(options) {
 
         return Promise.all(Object.keys(outFormat).map(id => {
             let ext = outFormat[id].ext ? '.' + outFormat[id].ext : srcExt;
-            let out = srcWithoutExt.replace(srcDir, outDir) + '-' + id + ext;
+            let out = srcWithoutExt.replace(srcFile ? path.dirname(srcFile) : srcDir, outDir) + '-' + id + ext;
             let options = [
                 outFormat[id].width, outFormat[id].height,
                 outFormat[id].quality, outFormat[id].strip,
