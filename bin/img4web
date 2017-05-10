@@ -34,6 +34,7 @@ function parseOutFormat(str) {
 if (fs.existsSync(RC)) {
     var rcConfig = JSON.parse(fs.readFileSync(RC, 'utf8'));
     if (rcConfig) {
+        config.srcFile = rcConfig.srcFile;
         config.srcDir = rcConfig.srcDir;
         config.srcExt = rcConfig.srcExt;
         config.outDir = rcConfig.outDir;
@@ -44,6 +45,7 @@ if (fs.existsSync(RC)) {
 if (fs.existsSync(PACKAGE)) {
     var packageConfig = require(PACKAGE);
     if (packageConfig.img4web) {
+        config.srcFile = packageConfig.img4web.srcFile || config.srcFile;
         config.srcDir = packageConfig.img4web.srcDir || config.srcDir;
         config.srcExt = packageConfig.img4web.srcExt || config.srcExt;
         config.outDir = packageConfig.img4web.outDir || rcConfig.outDir;
@@ -52,12 +54,15 @@ if (fs.existsSync(PACKAGE)) {
 }
 
 commander
+    .option('--src-file <file>', 'Specify source file (override --src-dir and --src-ext)')
     .option('--src-dir <dir>', 'Specify source dir')
     .option('--src-ext <extensions>', 'Specify source extensions')
     .option('--out-dir <dir>', 'Specify output dir')
     .option('--out-format <format>', 'Specify output format')
     .parse(process.argv);
 
+var srcFile = commander.srcFile || config.srcFile;
+config.srcFile = srcFile && path.resolve(srcFile);
 config.srcDir = path.resolve(commander.srcDir || config.srcDir);
 config.srcExt = commander.srcExt ? commander.srcExt.split(/\s*,\s*/) : config.srcExt;
 config.outDir = path.resolve(commander.outDir || config.outDir);

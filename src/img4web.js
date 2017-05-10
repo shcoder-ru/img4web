@@ -4,8 +4,8 @@ import createImage from './create-image';
 import path from 'path';
 
 export async function conver(options) {
-    let { srcDir, srcExt, outDir, outFormat } = options;
-    let files = await getFiles(srcDir, srcExt);
+    let { srcFile, srcDir, srcExt, outDir, outFormat } = options;
+    let files = srcFile ? [srcFile] : await getFiles(srcDir, srcExt);
 
     return await Promise.all(files.map(src => {
         let srcExt = path.extname(src);

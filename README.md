@@ -29,6 +29,7 @@ img4web --help
 #  Options:
 #
 #    -h, --help               output usage information
+#    --src-file <file>        Specify source file (override --src-dir and --src-ext)
 #    --src-dir <dir>          Specify source dir
 #    --src-ext <extensions>   Specify source extensions
 #    --out-dir <dir>          Specify output dir

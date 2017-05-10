@@ -7,7 +7,7 @@
     "crop",
     "adaptive"
   ],
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "lib/img4web.js",
   "bin": {
     "img4web": "./bin/img4web"
@@ -19,6 +19,7 @@
   },
   "author": "Vasiliy Shilov (shcoder.ru@ya.ru)",
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.24.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-runtime": "^6.23.0",
