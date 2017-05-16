@@ -51,7 +51,7 @@ To run the converter using npm, you can specify scripts in `package.json`
 ```json
 {
   "scripts": {
-    "convert-images": "img4web --src-dir ./tmp/src --src-ext jpg,png,gif --out-dir ./tmp/out --out-format 'sm1=ext:jpg,width:420,height:240,quality:80,strip:true,interlance:Line;md1=ext:jpg,width:640,height:480:quality:90,strip:true,interlance:Line'"
+    "convert-images": "img4web --src-dir ./tmp/src --src-ext jpg,png,gif --out-dir ./tmp/out --out-format 'sm1=ext:jpg,width:420,height:240,quality:80,strip:true,interlance:Line;md1=ext:jpg,width:640,height:480,quality:90,strip:true,interlance:Line'"
   }
 }
 ```
