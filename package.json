@@ -15,7 +15,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shcoder-ru/img4web.git"
+    "url": "https://github.com/uxter/img4web.git"
   },
   "author": "Vasiliy Shilov (shcoder.ru@ya.ru)",
   "devDependencies": {
